@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Services</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+
+    <style>
+      .service-image {
+        width: 100%;
+        object-fit: cover;
+      }
+      .service button {
+        border: 1px solid #3a3a3a;
+        width: max-content;
+        text-align: center;
+        background-color: var(--primary-color);
+        text-transform: uppercase;
+        font-family: "Avenir-Medium", sans-serif;
+      }
+      .heading p {
+        font-size: 1.25rem;
+      }
+      @media screen and (max-width: 768px) {
+        .service-image {
+          height: 18rem;
+        }
+        .service-icon img {
+          width: 40px;
+        }
+        .service-content {
+          padding: 1rem;
+          display: flex;
+          gap: 1rem;
+        }
+        .service p {
+          font-size: 1.15rem;
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        .skin-quiz-img {
+          border-radius: 0 0 0.375rem 0.375rem;
+        }
+        .consultations-img {
+          border-radius: 0.375rem 0.375rem 0 0;
+        }
+      }
+      @media screen and (min-width: 768px) {
+        .service-image {
+          height: 24rem;
+        }
+        .service-icon img {
+          width: 60px;
+        }
+        .skin-quiz-img {
+          border-radius: 0 0.375rem 0.375rem 0;
+        }
+        .consultations-img {
+          border-radius: 0.375rem 0 0 0.375rem;
+        }
+        .service-content {
+          padding: 1rem;
+        }
+        .service button {
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+        .service p {
+          font-size: 1.25rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="mt-4 mb-4">
+      <div class="container">
+        <div class="text-center heading">
+          <h3>Your Skin is Personal, so should be your experience</h3>
+          <p>
+            Upgrade your skincare routine with our customised skin quiz and
+            private one-on-one consultations.
+          </p>
+        </div>
+
+        <div class="card mb-3">
+          <div class="row service">
+            <div
+              class="col-lg-7 col-md-12 text-center p-3 d-flex flex-column justify-content-around align-items-center service-content"
+            >
+              <div class="service-icon">
+                <img
+                  src="https://uncoverskincare.com/ke/wp-content/uploads/2024/03/Skin-quiz-icon-pink.png"
+                  alt="Skin Quiz"
+                />
+              </div>
+              <h2>Skin Quiz</h2>
+              <p>
+                Take your skincare routine to a whole new level of
+                personalisation with our Skin Quiz. In just a few simple steps,
+                receive personalised products and advice for your skin type,
+                concern, and goals.
+              </p>
+              <button class="btn btn-primary">Take Skin Quiz</button>
+            </div>
+            <div class="col-lg-5 col-md-12">
+              <img
+                src="https://uncoverskincare.com/ng/wp-content/uploads/2024/03/Skin-quiz-image-block@2x.png"
+                alt="Skin Quiz"
+                class="service-image skin-quiz-img"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="card mb-3">
+          <div class="row service">
+            <div class="col-lg-5 col-md-12">
+              <img
+                src="https://uncoverskincare.com/ke/wp-content/uploads/2024/12/Sandra.png"
+                alt="Skin Quiz"
+                class="service-image consultations-img"
+              />
+            </div>
+            <div
+              class="col-lg-7 col-md-12 text-center p-3 d-flex flex-column justify-content-around align-items-center service-content"
+            >
+              <div class="service-icon">
+                <img
+                  src="https://uncoverskincare.com/ke/wp-content/uploads/2024/03/Consult-icon-orange.png"
+                  alt="Skin Quiz"
+                />
+              </div>
+              <h2>Consult Skincare Expert</h2>
+              <p>
+                Not sure how to address your skincare concerns? Book a private
+                one-on-one consultation with our in-house, certified Esthetician
+                Sandra and join the thousands of women she’s helped to reach
+                their skincare goals.
+              </p>
+              <button class="btn btn-primary">Book Consultation</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1nqE5lcG1Fw9ep7RNAiRwh9kMHpvLbHGK9Tnxhb6i"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

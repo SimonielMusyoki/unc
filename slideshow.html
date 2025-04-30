@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      .carousel-inner {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+      }
+
+      .carousel-item {
+        position: relative;
+        display: none;
+        width: 100%;
+        height: auto;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+      }
+
+      .carousel-item.active {
+        display: block;
+      }
+
+      .carousel-item-next,
+      .carousel-item-prev {
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      .carousel-item-next {
+        left: 100%;
+      }
+      .carousel-item-prev {
+        left: -100%;
+      }
+
+      .carousel-item-next.carousel-item-start,
+      .carousel-item-prev.carousel-item-end {
+        transform: translateX(0);
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 15%;
+        padding: 0;
+        color: #fff;
+        text-align: center;
+        background: none;
+        border: 0;
+        opacity: 0.5;
+        transition: opacity 0.15s ease;
+        cursor: pointer;
+      }
+
+      .carousel-control-prev:hover,
+      .carousel-control-next:hover {
+        opacity: 0.9;
+      }
+
+      .carousel-control-prev {
+        left: 0;
+      }
+
+      .carousel-control-next {
+        right: 0;
+      }
+
+      .carousel-indicators {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        z-index: 2;
+        display: flex;
+        list-style: none;
+        margin-left: -50%;
+        padding: 0;
+      }
+
+      .carousel-indicators li {
+        position: relative;
+        -webkit-box-sizing: content-box;
+        box-sizing: content-box;
+        -webkit-flex: 0 1 auto;
+        flex: 0 1 auto;
+        width: 30px;
+        height: 3px;
+        margin-right: 3px;
+        margin-left: 3px;
+        text-indent: -999px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 3px;
+      }
+
+      .carousel-indicators li.active {
+        background-color: #fff;
+      }
+
+      .carousel-caption {
+        position: absolute;
+        right: 15%;
+        bottom: 20px;
+        left: 15%;
+        z-index: 10;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .carousel-fade .carousel-item {
+        opacity: 0;
+        transition: opacity 0.6s ease-in-out;
+      }
+
+      .carousel-fade .carousel-item.active {
+        opacity: 1;
+      }
+
+      .carousel-fade .carousel-item-start,
+      .carousel-fade .carousel-item-end {
+        opacity: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky-top">
+      <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div
+          class="container-fluid d-flex align-items-center justify-content-between"
+        >
+          <button
+            id="sidebar-button"
+            class="btn btn-outline-secondary navbar-toggler"
+          >
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+            <span class="menu-bar"></span>
+          </button>
+          <div class="logo-section">
+            <a class="navbar-brand" href="#">
+              <img src="./assets/images/logo.svg" alt="Logo" height="50" />
+            </a>
+          </div>
+
+          <div class="d-md-none d-lg-block">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+              <li class="nav-item mega-menu">
+                <a class="nav-link" href="#"
+                  >Shop <i class="fa-solid fa-chevron-down"></i
+                ></a>
+                <div class="mega-menu-content">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="mega-menu-column">
+                        <h6>Top Sellers</h6>
+                        <ul>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://us.uncoverskincare.com/cdn/shop/files/Aloe_Invisible_Sunscreen2.jpg"
+                              alt="Aloe Invisible Suncreen"
+                            />
+                            <a href="#">Aloe Invisible Suncreen</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://us.uncoverskincare.com/cdn/shop/files/Argan_Hydrating_Moisturiser2.jpg"
+                              alt="Argan Hydrating Moisturiser"
+                            />
+                            <a href="#">Argan Hydrating Moisturiser</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://us.uncoverskincare.com/cdn/shop/files/Green_Tea_Rejuvenating_Cleanser2.jpg"
+                              alt="Green Tea Cleanser"
+                            />
+                            <a href="#">Green Tea Rejuvinating Cleanser</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://us.uncoverskincare.com/cdn/shop/files/Rooibos_Glow_Toner2.jpg"
+                              alt="Green Tea Cleanser"
+                            />
+                            <a href="#">Rooibos Glow Toner</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="mega-menu-column">
+                        <h6>Face Serums</h6>
+                        <ul>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://us.uncoverskincare.com/cdn/shop/files/Baobab_Glow-C_Serum2.jpg"
+                              alt="Baobab Glow-C Serum"
+                            />
+                            <a href="#">Baobab Glow-C Serum</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://us.uncoverskincare.com/cdn/shop/files/Licorice_Root_Dark_Spot_Serum2.jpg"
+                              alt="Licorice Root Dark Spot Serum"
+                            />
+                            <a href="#">Licorice Root Dark Spot Serum</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://uncoverskincare.com/ke/wp-content/uploads/2024/07/Green-Tea-Blemish-COntrol-Serum-2.jpg"
+                              alt="Green Tea Blemish Control Serum"
+                            />
+                            <a href="#">Green Tea Blemish Control Serum</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://uncoverskincare.com/ng/wp-content/uploads/2024/09/Even-Skin-Tone-Trio-100.jpg"
+                              alt="Even Skin Trio"
+                            />
+                            <a href="#">Even Skin Trio</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="mega-menu-column">
+                        <h6>Skincare Kits</h6>
+                        <ul>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://uncoverskincare.com/ke/wp-content/uploads/2022/11/E-kit-1.png"
+                              alt="Essential Skincare Kit"
+                            />
+                            <a href="#">Essential Skincare Kit</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://uncoverskincare.com/ke/wp-content/uploads/2023/07/5range.png"
+                              alt="Complete 5 Step Skincare Routine"
+                            />
+                            <a href="#">Complete 5 Step Skincare Routine</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://uncoverskincare.com/ke/wp-content/uploads/2023/03/6-jpg.webp"
+                              alt="On the Go Kit"
+                            />
+                            <a href="#">On the Go Kit</a>
+                          </li>
+                          <li>
+                            <img
+                              class="mega-menu-image"
+                              src="https://uncoverskincare.com/ng/wp-content/uploads/2023/01/sheet-faced-kit.jpg"
+                              alt="On the Go Kit"
+                            />
+                            <a href="#">Sheet Faced Kit</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-image-wrapper">
+                          <img
+                            class="mega-menu-image mega-menu-banner"
+                            src="https://uncoverskincare.com/ng/wp-content/uploads/2023/02/Spfmoisturiser_2.png"
+                            alt="Rooibos Glow Toner"
+                          />
+                          <div class="mega-menu-image-text">
+                            Extra 10% on Product Duos
+                          </div>
+                        </div>
+                      </div>
+                      <div class="mega-menu-column">
+                        <div class="mega-menu-image-wrapper">
+                          <img
+                            class="mega-menu-image mega-menu-banner"
+                            src="https://us.uncoverskincare.com/cdn/shop/files/Spot_Patches_2.jpg"
+                            alt="Spot Patches"
+                          />
+                          <div class="mega-menu-image-text">Spot Patches</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Glow Glossary</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Skin Quiz</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Contact Us</a>
+              </li>
+            </ul>
+          </div>
+          <div class="icon-section">
+            <a class="nav-link search-icon" href="#"
+              ><img
+                src="./assets/images/search.png"
+                alt="search icon"
+                style="width: 25px"
+            /></a>
+            <a class="nav-link" href="#"
+              ><img
+                src="./assets/images/account.png"
+                alt="account icon"
+                style="width: 30px"
+            /></a>
+            <a class="nav-link" href="#"
+              ><img
+                src="./assets/images/cart.png"
+                alt="cart icon"
+                style="width: 30px"
+            /></a>
+          </div>
+        </div>
+        <form action="" class="form w-100 p-2 mt-2 d-lg-none d-md-block">
+          <div class="input-group flex-nowrap">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="search for products or tips..."
+              aria-label="search"
+            />
+            <span class="input-group-text"
+              ><img
+                src="./assets/images/search.png"
+                alt="search icon"
+                style="width: 20px"
+            /></span>
+          </div>
+        </form>
+      </nav>
+      <aside class="p-2 sidebar">
+        <div class="sidebar-section">
+          <h5>Top Sellers</h5>
+          <ul>
+            <li><a href="#">Aloe Invisible Sunscreen</a></li>
+            <li><a href="#">Argan Hydrating Moisturiser</a></li>
+            <li><a href="#">Green Tea Rejuvinating Cleanser</a></li>
+            <li><a href="#">Rooibos Glow Toner</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h5>Face Serums</h5>
+          <ul>
+            <li><a href="#">Baobab Glow-C Serum</a></li>
+            <li><a href="#">Green Tea Blemish Control Serum</a></li>
+            <li><a href="#">Licorice Root Dark Spot Serum</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h5>Skincare Kits</h5>
+          <ul>
+            <li><a href="#">Essential Skincare Kit</a></li>
+            <li><a href="#">Complete 5 Step Skincare Routine</a></li>
+            <li><a href="#">On the Go Kit</a></li>
+            <li><a href="#">Glow Skincare Kit</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h5>Skincare Kits</h5>
+          <ul>
+            <li><a href="#">Essential Skincare Kit</a></li>
+            <li><a href="#">Complete 5 Step Skincare Routine</a></li>
+            <li><a href="#">On the Go Kit</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section"><h5>Book Skincare Consultation</h5></div>
+        <div class="sidebar-section"><h5>Glow Glossary</h5></div>
+        <div class="sidebar-section"><h5>About Us</h5></div>
+        <div class="sidebar-section"><h5>Contact Us</h5></div>
+      </aside>
+    </header>
+    <main>
+      <div
+        id="myCarousel"
+        class="carousel carousel-fade"
+        data-bs-ride="carousel"
+        data-bs-interval="3000"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://uncoverskincare.com/ng/wp-content/uploads/2025/04/Even-SkinTrio-desktop-3.jpg"
+              class="d-block w-100"
+              alt="Slide 1"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://uncoverskincare.com/ng/wp-content/uploads/2025/04/April_Glow-C_Desktop-1-B.jpg"
+              class="d-block w-100"
+              alt="Slide 2"
+            />
+          </div>
+          <div class="carousel-item">
+            <img
+              src="https://uncoverskincare.com/ng/wp-content/uploads/2025/04/April_Sunscreen-desktop-2.jpg"
+              class="d-block w-100"
+              alt="Slide 3"
+            />
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#myCarousel"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+        <div class="carousel-indicators">
+          <li
+            data-bs-target="#myCarousel"
+            data-bs-slide-to="0"
+            class="active"
+          ></li>
+          <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
+          <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="container-fluid bg-white py-4">
+        <div class="row">
+          <div class="col-lg-4 col-md-12 mt-3">
+            <h4>Uncover</h4>
+            <p>
+              Uncover is on a mission to revolutionalize selfcare on the
+              continent by building out a suite of digital tools and physical
+              products, starting with nourishing, safe and effective skincare!
+              Making it easy, healthy and fun wherever you are in your journey.
+            </p>
+            <ul class="social-icons">
+              <li>
+                <a href="#"><i class="fa-brands fa-instagram fa-xl"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-tiktok fa-xl"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-youtube fa-xl"></i></a>
+              </li>
+              <li>
+                <a href="#"><i class="fa-brands fa-linkedin fa-xl"></i></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mt-3">
+            <h4>Quick links</h4>
+            <ul>
+              <li>
+                <a href="#"> <i class="fa-solid fa-chevron-right"></i> Shop</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-chevron-right"></i> Skin Quiz</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-chevron-right"></i> Blog</a>
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-chevron-right"></i> About Us</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-chevron-right"></i> Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-2 col-md-6 mt-3">
+            <h4>Helpful Links</h4>
+            <ul>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-chevron-right"></i> Return Policy</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-chevron-right"></i> Privacy Policy</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-chevron-right"></i> F.A.Q.s</a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><i class="fa-solid fa-chevron-right"></i> Delivery
+                  Timelines</a
+                >
+              </li>
+              <li>
+                <a href="#"><i class="fa-solid fa-chevron-right"></i> Press</a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-lg-4 col-md-12 mt-3">
+            <h4>Subscribe to Our Newsletter</h4>
+            <p>
+              At Uncover, we are all about making skincare easy, healthy and
+              fun. Let's uncover tips and advice to support you wherever you are
+              in your skincare journey and always be the first to find out about
+              new products!
+            </p>
+            <form>
+              <div class="input-group mb-3">
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="Enter your email"
+                  aria-label="Enter your email"
+                  aria-describedby="button-subscribe"
+                />
+                <button
+                  class="btn btn-primary"
+                  type="submit"
+                  id="button-subscribe"
+                >
+                  Subscribe
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2025 Uncover Skincare. All rights reserved.
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const megaMenu = document.querySelector(".mega-menu");
+        const megaMenuContent = document.querySelector(".mega-menu-content");
+
+        if (megaMenu && megaMenuContent) {
+          document.addEventListener("click", (event) => {
+            if (
+              !megaMenu.contains(event.target) &&
+              !megaMenuContent.contains(event.target)
+            ) {
+              megaMenuContent.style.display = "none";
+            }
+          });
+        }
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        $("#sidebar-button").click(function () {
+          $(".sidebar").toggleClass("open");
+        });
+      });
+    </script>
+    <script>
+      $(document).ready(function () {
+        let touchStartX = null;
+        let touchEndX = null;
+        const threshold = 50; // Minimum distance to consider it a swipe
+        let intervalId = null;
+
+        function startCarousel() {
+          intervalId = setInterval(() => {
+            $("#myCarousel").carousel("next");
+          }, 3000);
+        }
+
+        function stopCarousel() {
+          clearInterval(intervalId);
+        }
+
+        $(".carousel-inner").on("touchstart", (e) => {
+          touchStartX = e.originalEvent.touches[0].clientX;
+          stopCarousel(); // Stop auto-sliding on touch
+        });
+
+        $(".carousel-inner").on("touchmove", (e) => {
+          touchEndX = e.originalEvent.touches[0].clientX;
+        });
+
+        $(".carousel-inner").on("touchend", (e) => {
+          if (!touchStartX || !touchEndX) return;
+
+          const diffX = touchStartX - touchEndX;
+
+          if (diffX > threshold) {
+            // Swipe left - next slide
+            $("#myCarousel").carousel("next");
+          } else if (diffX < -threshold) {
+            // Swipe right - previous slide
+            $("#myCarousel").carousel("prev");
+          }
+
+          // Reset touch positions
+          touchStartX = null;
+          touchEndX = null;
+          startCarousel(); // Restart auto-sliding after touch
+        });
+
+        // Start the carousel when the page loads
+        startCarousel();
+
+        // Optional: Stop and restart the carousel when controls are clicked
+        $(".carousel-control-prev, .carousel-control-next").on("click", () => {
+          stopCarousel();
+          startCarousel();
+        });
+      });
+    </script>
+  </body>
+</html>

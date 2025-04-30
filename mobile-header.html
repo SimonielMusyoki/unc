@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mobile Header</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      .navbar-toggler {
+        border: none;
+        padding: 0;
+      }
+      .icon-section {
+        display: flex;
+        gap: 1rem;
+      }
+      aside {
+        background-color: white;
+        display: none;
+      }
+      .sidebar-section h5 {
+        font-family: "Avenir-Medium" sans-serif;
+      }
+      .sidebar-section ul {
+        list-style-type: none;
+        padding-left: unset;
+      }
+      .sidebar-section ul li {
+        margin-top: 0.25rem;
+      }
+      .sidebar-section ul li a {
+        text-decoration: none;
+        font-family: "Avenir-Book";
+        font-size: 1.1rem;
+        :hover {
+          text-decoration: underline;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg bg-white shadow-sm">
+        <div class="container">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#main-nav"
+            aria-controls="main-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <img
+              src="./assets/images/menu.png"
+              alt="menu-toggler"
+              style="width: 40px"
+            />
+          </button>
+          <div class="logo-section ml-1">
+            <a class="navbar-brand" href="#">
+              <img src="./assets/images/logo.svg" alt="Logo" height="40" />
+            </a>
+          </div>
+          <div class="icon-section">
+            <a class="nav-link" href="#"
+              ><img
+                src="./assets/images/account.png"
+                alt="account icon"
+                style="width: 30px"
+            /></a>
+            <a class="nav-link" href="#"
+              ><img
+                src="./assets/images/cart.png"
+                alt="cart icon"
+                style="width: 30px"
+            /></a>
+          </div>
+        </div>
+        <form action="" class="form w-100 p-2 mt-2">
+          <div class="input-group flex-nowrap">
+            <input
+              type="text"
+              class="form-control"
+              placeholder="search for products or tips..."
+              aria-label="search"
+            />
+            <span class="input-group-text"
+              ><img
+                src="./assets/images/search.png"
+                alt="search icon"
+                style="width: 20px"
+            /></span>
+          </div>
+        </form>
+      </nav>
+      <aside class="p-2">
+        <div class="sidebar-section">
+          <h5>Top Sellers</h5>
+          <ul>
+            <li><a href="#">Aloe Invisible Sunscreen</a></li>
+            <li><a href="#">Argan Hydrating Moisturiser</a></li>
+            <li><a href="#">Green Tea Rejuvinating Cleanser</a></li>
+            <li><a href="#">Rooibos Glow Toner</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h5>Face Serums</h5>
+          <ul>
+            <li><a href="#">Baobab Glow-C Serum</a></li>
+            <li><a href="#">Green Tea Blemish Control Serum</a></li>
+            <li><a href="#">Licorice Root Dark Spot Serum</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h5>Skincare Kits</h5>
+          <ul>
+            <li><a href="#">Essential Skincare Kit</a></li>
+            <li><a href="#">Complete 5 Step Skincare Routine</a></li>
+            <li><a href="#">On the Go Kit</a></li>
+            <li><a href="#">Glow Skincare Kit</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section">
+          <h5>Skincare Kits</h5>
+          <ul>
+            <li><a href="#">Essential Skincare Kit</a></li>
+            <li><a href="#">Complete 5 Step Skincare Routine</a></li>
+            <li><a href="#">On the Go Kit</a></li>
+          </ul>
+        </div>
+        <div class="sidebar-section"><h5>Book Skincare Consultation</h5></div>
+        <div class="sidebar-section"><h5>Glow Glossary</h5></div>
+        <div class="sidebar-section"><h5>About Us</h5></div>
+        <div class="sidebar-section"><h5>Contact Us</h5></div>
+      </aside>
+    </header>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+      $(".navbar-toggler").click(function () {
+        $(".navbar-toggler").css("border", "none");
+        $("aside").toggle(
+          function () {
+            $("aside").css("width", "0");
+          },
+          function () {
+            $("aside").css("width", "100%");
+          }
+        );
+      });
+    </script>
+  </body>
+</html>
