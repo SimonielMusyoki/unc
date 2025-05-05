@@ -45,6 +45,11 @@
         width: 100%;
         height: 100%;
       }
+      .card-body {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
       .star-filled {
         color: #fa5a0f;
         font-size: 20px;
@@ -59,10 +64,11 @@
         text-decoration: line-through;
         margin-right: 5px;
       }
-      .btn-atc button {
+      .btn-atc .btn {
         padding: 0.5rem 2rem;
+        width: 100%;
       }
-      .btn-atc:hover {
+      .btn-atc .btn:hover {
         background-color: var(--viridian-green);
         border: 1px solid var(--viridian-green);
       }
@@ -83,10 +89,24 @@
         border-radius: 1rem;
         box-shadow: 2px 2px 1px var(--chartreusse);
       }
-      .card-text p {
-        margin-bottom: 0;
+      .card-mobile-bg {
+        background-position: 50%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 35vw;
+        height: 100%;
       }
-      @media screen and (min-width: 1200px) {
+      p.card-text {
+        margin-bottom: 0 !important;
+      }
+
+      @media screen and (min-width: 1400px) {
+        .product-grid {
+          grid-template-columns: repeat(5, 1fr);
+        }
+      }
+
+      @media screen and (max-width: 1399px) and (min-width: 1201px) {
         .product-grid {
           grid-template-columns: repeat(4, 1fr);
         }
@@ -97,19 +117,19 @@
           grid-template-columns: repeat(3, 1fr);
         }
       }
-      @media screen and (max-width: 992px) {
+      @media screen and (max-width: 992px) and (min-width: 576px) {
+        .product-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media screen and (max-width: 576px) {
         .product-grid {
           grid-template-columns: repeat(1, 1fr);
           gap: 0.5rem;
         }
         .product-card {
           display: flex;
-          flex-direction: row !important;
-        }
-        .product-card img {
-          max-width: 35vw !important;
-          aspect-ratio: 1 / 1;
-          padding: 1rem;
+          /* flex-direction: row !important; */
         }
         .star-filled {
           font-size: 12px;
@@ -123,11 +143,11 @@
         .card-text {
           overflow: hidden;
           text-overflow: ellipsis;
-          display: -webkit-box;
+          /* display: -webkit-box;
           -webkit-line-clamp: 2; /* number of lines to show */
-          -webkit-box-orient: vertical;
-          max-height: 2.4em;
-          font-size: 1em;
+          /* -webkit-box-orient: vertical;
+          max-height: 2.4em; */
+          /* font-size: 1em; */
         }
       }
     </style>
@@ -401,30 +421,34 @@
               alt="Aloe Invisible Suncreen"
             />
             <div class="card-body">
-              <h5 class="card-title">Aloe Invisible Sunscreen</h5>
-              <p class="card-text">
-                No white cast, lightweight SPF 50+ sunscreen infused with
-                Hyaluronic Acid and African Aloe Vera, perfect for everyday use.
-              </p>
-              <div class="ratings d-flex align-items-center my-1">
-                <div class="ratings-stars">
-                  <i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i>
+              <div class="product-title">
+                <h5 class="card-title">Aloe Invisible Sunscreen</h5>
+                <p class="card-text">
+                  No white cast, lightweight SPF 50+ sunscreen infused with
+                  Hyaluronic Acid and African Aloe Vera, perfect for everyday
+                  use.
+                </p>
+              </div>
+              <div class="product-info">
+                <div class="ratings d-flex align-items-center my-1">
+                  <div class="ratings-stars">
+                    <i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i>
+                  </div>
+                  <div class="rating-count">(2,305)</div>
                 </div>
-                <div class="rating-count">(2,305)</div>
-              </div>
-              <div class="d-flex price">
-                <span class="regular-price">KSh 3,200</span>
-                <span class="sale-price">KSh 2,999</span>
-              </div>
-              <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <div class="d-flex price">
+                  <span class="regular-price">KSh 3,200</span>
+                  <span class="sale-price">KSh 2,999</span>
+                </div>
+                <div class="btn-atc mt-2">
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
               </div>
             </div>
-            <div class="product-badge"><span>Best Seller</span></div>
           </div>
 
           <div class="card product-card">
@@ -434,28 +458,32 @@
               alt="Aloe Invisible Suncreen"
             />
             <div class="card-body">
-              <h5 class="card-title">I Am Secured Spot Patches</h5>
-              <p class="card-text">
-                Heals pimples fast with advanced hydrocolloid technology.
-                Infused with Salicylic Acid, Centella Asitica and more acne
-                fighting ingredients
-              </p>
-              <div class="ratings d-flex align-items-center my-1">
-                <div class="ratings-stars">
-                  <i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i>
+              <div class="product-title">
+                <h5 class="card-title">I Am Secured Spot Patches</h5>
+                <p class="card-text">
+                  Heals pimples fast with advanced hydrocolloid technology.
+                  Infused with Salicylic Acid, Centella Asitica and more acne
+                  fighting ingredients
+                </p>
+              </div>
+              <div class="product-info">
+                <div class="ratings d-flex align-items-center my-1">
+                  <div class="ratings-stars">
+                    <i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i>
+                  </div>
+                  <div class="rating-count">(2,305)</div>
                 </div>
-                <div class="rating-count">(2,305)</div>
-              </div>
-              <div class="d-flex price">
-                <span class="regular-price">KSh 3,200</span>
-                <span class="sale-price">KSh 2,999</span>
-              </div>
-              <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <div class="d-flex price">
+                  <span class="regular-price">KSh 3,200</span>
+                  <span class="sale-price">KSh 2,999</span>
+                </div>
+                <div class="btn-atc mt-2">
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
               </div>
             </div>
           </div>
@@ -467,28 +495,32 @@
               alt="Aloe Invisible Suncreen"
             />
             <div class="card-body">
-              <h5 class="card-title">Argan Hydrating Moisturiser</h5>
-              <p class="card-text">
-                Nourishes, revives, deeply moisturises and hydrates your skin
-                without clogging pores. Powered by Squalene, Niacinamide &
-                Moringa.
-              </p>
-              <div class="ratings d-flex align-items-center my-1">
-                <div class="ratings-stars">
-                  <i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i>
+              <div class="product-title">
+                <h5 class="card-title">Argan Hydrating Moisturiser</h5>
+                <p class="card-text">
+                  Nourishes, revives, deeply moisturises and hydrates your skin
+                  without clogging pores. Powered by Squalene, Niacinamide &
+                  Moringa.
+                </p>
+              </div>
+              <div class="product-info">
+                <div class="ratings d-flex align-items-center my-1">
+                  <div class="ratings-stars">
+                    <i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i>
+                  </div>
+                  <div class="rating-count">(2,305)</div>
                 </div>
-                <div class="rating-count">(2,305)</div>
-              </div>
-              <div class="d-flex price">
-                <span class="regular-price">KSh 3,200</span>
-                <span class="sale-price">KSh 2,999</span>
-              </div>
-              <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <div class="d-flex price">
+                  <span class="regular-price">KSh 3,200</span>
+                  <span class="sale-price">KSh 2,999</span>
+                </div>
+                <div class="btn-atc mt-2">
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
               </div>
             </div>
           </div>
@@ -500,28 +532,32 @@
               alt="Aloe Invisible Suncreen"
             />
             <div class="card-body">
-              <h5 class="card-title">Baobab Glow C Serum (Vitamin C)</h5>
-              <p class="card-text">
-                Brightens and evens out skin with Vitamin C, Arbutin, and
-                African Baobab. Leaves skin feeling healthy, protected and
-                nourished.
-              </p>
-              <div class="ratings d-flex align-items-center my-1">
-                <div class="ratings-stars">
-                  <i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i
-                  ><i class="bi bi-star-fill star-filled"></i>
+              <div class="product-title">
+                <h5 class="card-title">Baobab Glow C Serum (Vitamin C)</h5>
+                <p class="card-text">
+                  Brightens and evens out skin with Vitamin C, Arbutin, and
+                  African Baobab. Leaves skin feeling healthy, protected and
+                  nourished.
+                </p>
+              </div>
+              <div class="product-info">
+                <div class="ratings d-flex align-items-center my-1">
+                  <div class="ratings-stars">
+                    <i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i
+                    ><i class="bi bi-star-fill star-filled"></i>
+                  </div>
+                  <div class="rating-count">(2,305)</div>
                 </div>
-                <div class="rating-count">(2,305)</div>
-              </div>
-              <div class="d-flex price">
-                <span class="regular-price">KSh 3,200</span>
-                <span class="sale-price">KSh 2,999</span>
-              </div>
-              <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <div class="d-flex price">
+                  <span class="regular-price">KSh 3,200</span>
+                  <span class="sale-price">KSh 2,999</span>
+                </div>
+                <div class="btn-atc mt-2">
+                  <a href="#" class="btn btn-primary">Add to Cart</a>
+                </div>
               </div>
             </div>
             <div class="product-badge"><span>Vitamin C</span></div>
@@ -555,7 +591,7 @@
                 <span class="sale-price">KSh 2,999</span>
               </div>
               <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
               </div>
             </div>
             <div class="product-badge"><span>Most Loved</span></div>
@@ -589,7 +625,7 @@
                 <span class="sale-price">KSh 2,999</span>
               </div>
               <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
               </div>
             </div>
           </div>
@@ -622,7 +658,7 @@
                 <span class="sale-price">KSh 2,999</span>
               </div>
               <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
               </div>
             </div>
             <div class="product-badge"><span>Award Winning</span></div>
@@ -655,7 +691,7 @@
                 <span class="sale-price">KSh 2,999</span>
               </div>
               <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
               </div>
             </div>
           </div>
@@ -688,7 +724,7 @@
                 <span class="sale-price">KSh 2,999</span>
               </div>
               <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
               </div>
             </div>
           </div>
@@ -720,7 +756,7 @@
                 <span class="sale-price">KSh 2,999</span>
               </div>
               <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
               </div>
             </div>
           </div>
@@ -751,7 +787,7 @@
                 <span class="sale-price">KSh 2,999</span>
               </div>
               <div class="btn-atc mt-2">
-                <a href="#" class="btn btn-primary btn-atc">Add to Cart</a>
+                <a href="#" class="btn btn-primary">Add to Cart</a>
               </div>
             </div>
             <div class="product-badge"><span>Extra Free Mask</span></div>
